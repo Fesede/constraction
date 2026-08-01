@@ -1,14 +1,14 @@
-/** @type {import('next').NextConfig} */
+/** @type {import('next').NextJSConfig} */
 const nextConfig = {
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "img.magnific.com",
+        hostname: "img.freepik.com",
       },
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
+        hostname: "img.magnific.com",
       },
     ],
   },

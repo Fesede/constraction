@@ -18,7 +18,7 @@ export default function Header() {
             />
           </div>
           <span className="text-xl font-bold tracking-tight text-white">
-            C-<span className="text-sky-500">TMS</span>
+            Construct<span className="text-sky-500">Co</span>
           </span>
         </Link>
 

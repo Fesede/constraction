@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Header from "./components/Header";
+import Footer from "./components/Footer"; // <--- ADD THIS IMPORT
 import {
   ArrowRight,
   Building2,
@@ -52,10 +53,8 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
       {/* --- HEADER --- */}
       <Header />
-
       {/* --- HERO SECTION --- */}
       <section className="relative overflow-hidden py-24 lg:py-36 min-h-[85vh] flex items-center justify-center">
-        {/* Background Image & Dark Overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://img.magnific.com/free-photo/illustration-construction-site_23-2151850238.jpg?semt=ais_hybrid&w=740&q=80"
@@ -68,16 +67,13 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-slate-950/75 backdrop-blur-[1px]" />
         </div>
 
-        {/* Hero Content */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto max-w-3xl text-center">
-            {/* Pill Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-xs font-semibold text-sky-300 backdrop-blur-md mb-6">
               <Truck className="h-3.5 w-3.5 text-sky-400" />
               <span>Licensed & Certified General Contractors</span>
             </div>
 
-            {/* Headline */}
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
               Building strong foundations{" "}
               <span className="bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
@@ -85,14 +81,12 @@ export default function HomePage() {
               </span>
             </h1>
 
-            {/* Subtitle */}
             <p className="mt-6 text-lg text-slate-300 leading-relaxed sm:text-xl">
               We specialize in high-quality commercial, residential, and
               infrastructure construction with modern engineering standards and
               structural excellence.
             </p>
 
-            {/* CTA Buttons */}
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="/contact"
@@ -109,7 +103,6 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Proof Points */}
             <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-4 w-4 text-sky-400" />
@@ -127,7 +120,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- STATS SECTION --- */}
       <section className="border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -145,7 +137,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
       {/* --- SERVICES SECTION --- */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -182,8 +173,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* --- CALL TO ACTION (CTA) SECTION --- */}
+      {/* --- CALL TO ACTION SECTION --- */}
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-800 px-6 py-16 text-center text-white shadow-xl sm:px-12 lg:px-16">
@@ -205,6 +195,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      {/* --- FOOTER --- */}
+      <Footer /> {/* <--- ADDED HERE */}
     </div>
   );
 }

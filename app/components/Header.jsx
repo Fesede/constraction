@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   Truck,
   ShieldCheck,
@@ -163,7 +164,7 @@ export default function AboutPage() {
           <span className="text-xl font-bold tracking-tight text-white">
             C-<span className="text-sky-500">TMS</span>
           </span>
-        </Link>
+        </div>
 
         {/* NAVIGATION LINKS */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">

@@ -1,116 +1,180 @@
-import { Truck, ShieldCheck, Clock, HardHat, TrendingUp } from 'lucide-react';
+import {
+  Truck,
+  ShieldCheck,
+  Clock,
+  HardHat,
+  TrendingUp,
+  MapPin,
+  Wrench,
+} from "lucide-react";
 
 export const metadata = {
-  title: 'About Us | Construction Logistics Platform',
-  description: 'Streamlining construction supply chains, fleet dispatch, and site delivery slotting.',
+  title: "About | C-TMS ERP Core Logistics",
+  description:
+    "Enterprise-grade heavy material logistics ERP engineered for construction fleet dispatch, geofenced alerts, and offline e-POD.",
 };
 
 export default function AboutPage() {
   const stats = [
-    { label: 'Active Job Sites', value: '1,200+' },
-    { label: 'On-Time Deliveries', value: '98.4%' },
-    { label: 'Material Saved (Tons)', value: '45,000+' },
-    { label: 'Fleet Vehicles Managed', value: '8,500+' },
+    { label: "Active Job Sites", value: "1,200+" },
+    { label: "On-Time Deliveries", value: "98.4%" },
+    { label: "Geofence Alerts / Mo", value: "150K+" },
+    { label: "Heavy Fleet Vehicles", value: "8,500+" },
   ];
 
   const features = [
     {
-      icon: <Truck className="w-8 h-8 text-amber-500" />,
-      title: 'Real-Time Fleet Dispatch',
-      description: 'Live GPS tracking and dynamic routing for heavy machinery and haulage trucks.',
+      icon: <Truck className="w-5 h-5 text-sky-400" />,
+      title: "Automated Dispatching",
+      description:
+        "Matches payload requirements (Dump Truck, Cement Mixer, Flatbed) with driver availability and tonnage limits.",
     },
     {
-      icon: <Clock className="w-8 h-8 text-amber-500" />,
-      title: 'Precision Site Gate Slotting',
-      description: 'Eliminate site gate congestion with time-slotted material delivery windows.',
+      icon: <MapPin className="w-5 h-5 text-sky-400" />,
+      title: "Geofence Alerts",
+      description:
+        "Automated 5 km perimeter alerts notify Site Managers as incoming trucks approach job site gates.",
     },
     {
-      icon: <ShieldCheck className="w-8 h-8 text-amber-500" />,
-      title: 'Safety & Compliance',
-      description: 'Automated digital checklists for vehicle weight, driver certification, and load security.',
+      icon: <ShieldCheck className="w-5 h-5 text-sky-400" />,
+      title: "Offline e-POD Verification",
+      description:
+        "Touchscreen digital signatures auto-sync material receipts when drivers reconnect from low-network zones.",
     },
     {
-      icon: <TrendingUp className="w-8 h-8 text-amber-500" />,
-      title: 'Cost & Waste Reduction',
-      description: 'Analytics dashboards tracking idle time, fuel consumption, and material overflow.',
+      icon: <Wrench className="w-5 h-5 text-sky-400" />,
+      title: "Maintenance Logging",
+      description:
+        "In-cab mobile ticketing allowing drivers to flag mechanical faults with severity ratings directly to Fleet Managers.",
+    },
+  ];
+
+  const roles = [
+    {
+      title: "Fleet Manager",
+      access: "Admin / Back-Office",
+      tasks:
+        "Vehicle assignment, automated dispatch, live telemetry tracking, and maintenance triage.",
+    },
+    {
+      title: "Site Manager",
+      access: "Field Supervisor",
+      tasks:
+        "Gate clearance, material inspection, e-POD digital signature capture, and inventory logging.",
+    },
+    {
+      title: "Truck Driver",
+      access: "Mobile Client App",
+      tasks:
+        "GPS navigation, pre-trip vehicle checks, offline delivery sign-offs, and mechanical issue reports.",
     },
   ];
 
   return (
-    <main className="bg-slate-900 text-slate-100 min-h-screen font-sans">
+    <main className="bg-[#070A12] text-slate-100 min-h-screen font-sans selection:bg-sky-500 selection:text-white">
       {/* Hero Section */}
       <section className="relative py-20 px-6 max-w-6xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6 border border-amber-500/20">
-          <HardHat className="w-4 h-4" /> Next-Gen Construction Logistics
+        <div className="inline-flex items-center gap-2 bg-sky-950/60 text-sky-400 px-4 py-1.5 rounded-full text-xs font-semibold mb-6 border border-sky-800/40 tracking-wide uppercase">
+          <HardHat className="w-4 h-4 text-sky-400" /> C-TMS ERP Core
+          Specification
         </div>
-        <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-          Streamlining Supply Chains for <br />
-          <span className="text-amber-500">Smarter Job Sites</span>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
+          Construction Transport Management System
         </h1>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-          We build digital infrastructure that connects job sites, material suppliers, and freight fleets into a single, synchronized workflow.
+        <p className="text-slate-400 max-w-2xl mx-auto text-base leading-relaxed">
+          Integrating real-time GPS telemetry, geofenced site alerts, offline
+          e-POD, and driver diagnostics into a single enterprise platform.
         </p>
       </section>
 
-      {/* Stats Section */}
-      <section className="bg-slate-800/50 border-y border-slate-800 py-12">
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {stats.map((stat, index) => (
-            <div key={index} className="space-y-1">
-              <div className="text-3xl md:text-4xl font-bold text-amber-500">{stat.value}</div>
-              <div className="text-sm text-slate-400 font-medium">{stat.label}</div>
+      {/* Core Software Features (Matches Your Image Card Style) */}
+      <section className="py-12 max-w-6xl mx-auto px-6">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            Software Requirements Specification (SRS)
+          </h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-sm">
+            Core system capabilities supporting back-office dispatchers and site
+            field crews.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {features.map((feature, idx) => (
+            <div
+              key={idx}
+              className="bg-[#111726] border border-slate-800/80 p-6 rounded-2xl hover:border-sky-500/40 transition-colors duration-200"
+            >
+              {/* Cyan Icon Box from design */}
+              <div className="w-10 h-10 rounded-xl bg-sky-950/80 border border-sky-800/30 flex items-center justify-center mb-5">
+                {feature.icon}
+              </div>
+              <h3 className="text-base font-semibold text-white mb-2">
+                {feature.title}
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {feature.description}
+              </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className="py-20 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <h2 className="text-3xl font-bold mb-4 text-white">Our Mission</h2>
-          <p className="text-slate-300 leading-relaxed mb-4">
-            Construction delays cost the global industry billions annually—over 30% of which stems from supply chain friction, uncoordinated truck arrivals, and misplaced inventory.
-          </p>
-          <p className="text-slate-300 leading-relaxed">
-            Our platform provides end-to-end visibility across every leg of the haul, giving site superintendents and logistics managers total control over site flow and material delivery schedules.
-          </p>
-        </div>
-        <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700/50">
-          <h3 className="text-xl font-bold text-amber-500 mb-4">Why Logistics Matter</h3>
-          <ul className="space-y-3 text-slate-300 text-sm">
-            <li className="flex items-start gap-2">
-              <span className="text-amber-500 font-bold">✓</span> Eliminates truck idling & urban traffic congestion.
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-500 font-bold">✓</span> Ensures critical materials arrive right when crews need them.
-            </li>
-            <li className="flex items-start gap-2">
-              <span className="text-amber-500 font-bold">✓</span> Digitize paper tickets to speed up billing and auditing.
-            </li>
-          </ul>
+      {/* Stats Section */}
+      <section className="py-12 px-6 max-w-6xl mx-auto">
+        <div className="bg-[#111726] border border-slate-800/80 rounded-2xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          {stats.map((stat, index) => (
+            <div key={index} className="space-y-1">
+              <div className="text-3xl md:text-4xl font-extrabold text-sky-400">
+                {stat.value}
+              </div>
+              <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">
+                {stat.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* Core Features */}
-      <section className="py-16 bg-slate-950 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-white mb-3">Built for the Field & the Office</h2>
-            <p className="text-slate-400 max-w-xl mx-auto text-sm">
-              Designed specifically for general contractors, sub-contractors, and material haulers.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, idx) => (
-              <div key={idx} className="bg-slate-900 border border-slate-800 p-6 rounded-xl hover:border-amber-500/50 transition-colors">
-                <div className="mb-4">{feature.icon}</div>
-                <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
-                <p className="text-slate-400 text-sm leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+      {/* RBAC Roles Section */}
+      <section className="py-16 px-6 max-w-6xl mx-auto">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            Target Users & Access Control (RBAC)
+          </h2>
+          <p className="text-slate-400 max-w-xl mx-auto text-sm">
+            Operational roles and security permission levels across C-TMS
+            module.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          {roles.map((role, idx) => (
+            <div
+              key={idx}
+              className="bg-[#111726] border border-slate-800/80 p-6 rounded-2xl"
+            >
+              <span className="text-[11px] font-semibold text-sky-400 bg-sky-950/80 border border-sky-800/30 px-3 py-1 rounded-md uppercase tracking-wider">
+                {role.access}
+              </span>
+              <h3 className="text-lg font-bold text-white mt-5 mb-2">
+                {role.title}
+              </h3>
+              <p className="text-slate-400 text-sm leading-relaxed">
+                {role.tasks}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
+
+      {/* Document Footer */}
+      <footer className="border-t border-slate-800/80 py-8 px-6 text-center text-xs text-slate-500">
+        <p>
+          C-TMS ERP Core • Executive Functional Specification • Prepared by
+          Dereje Sebsibe & Bemnet Gudisa (July 2026)
+        </p>
+      </footer>
     </main>
   );
 }

@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import Header from "./components/Header";
-import Footer from "./components/Footer"; // <--- ADD THIS IMPORT
+import Footer from "./components/Footer";
+import { motion, type Variants } from "framer-motion";
 import {
   ArrowRight,
   Building2,
@@ -12,7 +15,6 @@ import {
   Truck,
 } from "lucide-react";
 
-// Construction Services & Features
 const features = [
   {
     icon: Building2,
@@ -40,7 +42,6 @@ const features = [
   },
 ];
 
-// Construction Company Stats
 const stats = [
   { label: "Completed Projects", value: "250+" },
   { label: "Years of Experience", value: "15+" },
@@ -48,11 +49,29 @@ const stats = [
   { label: "Safety Compliance", value: "100%" },
 ];
 
+// Motion animation variants
+const fadeInUp: Variants = {
+  hidden: { opacity: 0, y: 25 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
 export default function HomePage() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
-      {/* --- HEADER --- */}
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors overflow-x-hidden">
       <Header />
+
       {/* --- HERO SECTION --- */}
       <section className="relative overflow-hidden py-24 lg:py-36 min-h-[85vh] flex items-center justify-center">
         <div className="absolute inset-0 z-0">
@@ -68,7 +87,12 @@ export default function HomePage() {
         </div>
 
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="mx-auto max-w-3xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto max-w-3xl text-center"
+          >
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-xs font-semibold text-sky-300 backdrop-blur-md mb-6">
               <Truck className="h-3.5 w-3.5 text-sky-400" />
               <span>Licensed & Certified General Contractors</span>
@@ -102,45 +126,48 @@ export default function HomePage() {
                 Explore Our Portfolio
               </Link>
             </div>
-
-            <div className="mt-10 flex flex-wrap justify-center gap-6 text-sm text-slate-300">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-sky-400" />
-                On-Time Delivery
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-sky-400" />
-                Strict Safety Protocol
-              </span>
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="h-4 w-4 text-sky-400" />
-                Transparent Pricing
-              </span>
-            </div>
-          </div>
+          </motion.div>
         </div>
       </section>
-      {/* --- STATS SECTION --- */}
+
+      {/* --- STATS SECTION WITH COUNTER MOTION --- */}
       <section className="border-y border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 py-12">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-2 gap-8 md:grid-cols-4"
+          >
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
+              <motion.div
+                key={index}
+                variants={fadeInUp}
+                className="text-center"
+              >
                 <p className="text-3xl font-bold tracking-tight text-sky-600 dark:text-sky-400 sm:text-4xl">
                   {stat.value}
                 </p>
                 <p className="mt-1 text-sm font-medium text-slate-600 dark:text-slate-400">
                   {stat.label}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
-      {/* --- SERVICES SECTION --- */}
+
+      {/* --- SERVICES SECTION WITH SCROLL FADE --- */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Comprehensive Construction Services
             </h2>
@@ -148,15 +175,23 @@ export default function HomePage() {
               From site planning and architectural drafting to structural
               assembly and final handover.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          >
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-md transition-shadow"
+                  variants={fadeInUp}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-sm hover:shadow-lg transition-shadow"
                 >
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-400 mb-5">
                     <Icon className="h-6 w-6" />
@@ -167,36 +202,14 @@ export default function HomePage() {
                   <p className="mt-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
                     {feature.description}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
-      {/* --- CALL TO ACTION SECTION --- */}
-      <section className="pb-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-blue-950 to-slate-900 border border-slate-800 px-6 py-16 text-center text-white shadow-xl sm:px-12 lg:px-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              Have a construction project in mind?
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-slate-300">
-              Consult with our structural engineering team today to review
-              blueprints, timelines, and cost estimations.
-            </p>
-            <div className="mt-8 flex justify-center">
-              <Link
-                href="/contact"
-                className="rounded-xl bg-sky-600 px-8 py-3.5 text-base font-semibold text-white shadow-md hover:bg-sky-500 active:scale-95 transition-all"
-              >
-                Get a Consulted Estimate
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* --- FOOTER --- */}
-      <Footer /> {/* <--- ADDED HERE */}
+
+      <Footer />
     </div>
   );
 }

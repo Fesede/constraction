@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import Header from "./../components/Header";
-import Footer from "./../components/Footer";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   Building,
@@ -10,10 +13,9 @@ import {
   Clock,
   MapPin,
   ShieldCheck,
-  Truck,
 } from "lucide-react";
 
-// Featured Realized & In-Progress Projects
+// Project portfolio data
 const projects = [
   {
     id: "ctms-erp-deployment",
@@ -91,13 +93,14 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
+    <div className="flex flex-col min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors overflow-x-hidden">
       {/* --- HEADER --- */}
       <Header />
 
-      {/* --- HERO SECTION --- */}
+      {/* --- HERO SECTION WITH BACKGROUND IMAGE --- */}
       <section className="relative overflow-hidden py-20 lg:py-28 bg-slate-900 text-white">
-        <div className="absolute inset-0 z-0 opacity-20">
+        {/* Background Image Layer */}
+        <div className="absolute inset-0 z-0 opacity-25">
           <Image
             src="https://img.freepik.com/free-photo/construction-site-with-cranes-building_23-2148281146.jpg"
             alt="Construction Projects Background"
@@ -106,31 +109,45 @@ export default function ProjectsPage() {
             sizes="100vw"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[1px]" />
         </div>
 
+        {/* Hero Content */}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-xs font-semibold text-sky-300 backdrop-blur-md mb-6">
-            <Building className="h-3.5 w-3.5 text-sky-400" />
-            <span>Proven Engineering & System Track Record</span>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-500/10 px-4 py-1.5 text-xs font-semibold text-sky-300 backdrop-blur-md mb-6">
+              <Building className="h-3.5 w-3.5 text-sky-400" />
+              <span>Proven Engineering & System Track Record</span>
+            </div>
 
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-            Our Featured{" "}
-            <span className="text-sky-400">Projects & ERP Deployments</span>
-          </h1>
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
+              Our Featured{" "}
+              <span className="text-sky-400">Projects & ERP Deployments</span>
+            </h1>
 
-          <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-300 leading-relaxed sm:text-xl">
-            From heavy commercial infrastructure to integrated transport
-            logistics systems, discover how ConstructCo delivers excellence
-            across site and software.
-          </p>
+            <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-300 leading-relaxed sm:text-xl">
+              From heavy commercial infrastructure to integrated transport
+              logistics systems, discover how ConstructCo delivers excellence
+              across site and software.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* --- PROJECTS GRID SECTION --- */}
       <section className="py-20 lg:py-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Engineering & Logistics Portfolio
             </h2>
@@ -138,24 +155,35 @@ export default function ProjectsPage() {
               Delivering high-value construction developments and cutting-edge
               C-TMS ERP logistics integrations.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <div
+            {projects.map((project, idx) => (
+              <motion.div
                 key={project.id}
-                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-xl transition-all"
               >
                 {/* Image Banner */}
                 <div className="relative h-64 w-full overflow-hidden bg-slate-950">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent" />
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.4 }}
+                    className="h-full w-full relative"
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                    />
+                  </motion.div>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
 
                   {/* Status Badge */}
                   <div className="absolute top-4 left-4 flex items-center gap-2">
@@ -182,7 +210,7 @@ export default function ProjectsPage() {
                     </span>
                   </div>
 
-                  {/* Location & Title overlay */}
+                  {/* Location Overlay */}
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <div className="flex items-center gap-2 text-xs text-sky-400 mb-1">
                       <MapPin className="h-3.5 w-3.5 shrink-0" />
@@ -205,9 +233,9 @@ export default function ProjectsPage() {
                         Key Project Specifications
                       </h4>
                       <ul className="space-y-2">
-                        {project.specs.map((spec, idx) => (
+                        {project.specs.map((spec, index) => (
                           <li
-                            key={idx}
+                            key={index}
                             className="flex items-center gap-2 text-sm text-slate-700 dark:text-slate-300"
                           >
                             <ShieldCheck className="h-4 w-4 text-sky-500 shrink-0" />
@@ -218,12 +246,12 @@ export default function ProjectsPage() {
                     </div>
                   </div>
 
-                  {/* Tags & Date */}
+                  {/* Tags & Date Footer */}
                   <div className="border-t border-slate-100 dark:border-slate-800 pt-4 flex items-center justify-between gap-4">
                     <div className="flex flex-wrap gap-1.5">
-                      {project.tags.map((tag, idx) => (
+                      {project.tags.map((tag, tagIdx) => (
                         <span
-                          key={idx}
+                          key={tagIdx}
                           className="bg-slate-100 dark:bg-slate-800/80 text-slate-600 dark:text-slate-400 text-xs px-2.5 py-1 rounded-md font-medium"
                         >
                           {tag}
@@ -236,7 +264,7 @@ export default function ProjectsPage() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -245,7 +273,13 @@ export default function ProjectsPage() {
       {/* --- CTA SECTION --- */}
       <section className="pb-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 px-6 py-16 text-center text-white shadow-xl sm:px-12 lg:px-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative overflow-hidden rounded-3xl bg-slate-900 border border-slate-800 px-6 py-16 text-center text-white shadow-xl sm:px-12 lg:px-16"
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               Have an Upcoming Project or ERP Requirement?
             </h2>
@@ -263,7 +297,7 @@ export default function ProjectsPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 

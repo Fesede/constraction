@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import Header from "./../components/Header"; // <--- FIXED RELATIVE PATH
-import Footer from "./../components/Footer"; // <--- ADDED FOOTER IMPORT
+import Header from "../components/Header"; // <--- FIXED RELATIVE PATH
+import Footer from "../components/Footer"; // <--- ADDED FOOTER IMPORT
 import {
   ArrowRight,
   CheckCircle2,

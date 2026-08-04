@@ -1,4 +1,10 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { motion } from "framer-motion";
 import {
   Truck,
   ShieldCheck,
@@ -11,13 +17,6 @@ import {
   Building2,
   CheckCircle2,
 } from "lucide-react";
-
-// Next.js Metadata for SEO
-export const metadata = {
-  title: "About | C-TMS ERP Core Specification",
-  description:
-    "Executive Functional Specification for Construction Building Transport Management System.",
-};
 
 export default function AboutPage() {
   const systemSpecs = {
@@ -46,21 +45,21 @@ export default function AboutPage() {
     {
       role: "Fleet Manager",
       access: "Admin / Back-Office",
-      badgeStyle: "bg-purple-100 text-purple-800 border-purple-200",
+      badgeStyle: "bg-purple-500/10 text-purple-300 border-purple-500/30",
       duties:
         "Vehicle assignment, dispatch scheduling, GPS telemetry monitoring, maintenance review.",
     },
     {
       role: "Site Manager",
       access: "Field Supervisor",
-      badgeStyle: "bg-blue-100 text-blue-800 border-blue-200",
+      badgeStyle: "bg-blue-500/10 text-blue-300 border-blue-500/30",
       duties:
         "Material receiving signoff, digital e-POD signature capture, site inventory confirmation.",
     },
     {
       role: "Truck Driver",
       access: "Mobile Client App",
-      badgeStyle: "bg-emerald-100 text-emerald-800 border-emerald-200",
+      badgeStyle: "bg-emerald-500/10 text-emerald-300 border-emerald-500/30",
       duties:
         "Route navigation, pre-trip inspections, offline signature sync, issue logging.",
     },
@@ -72,21 +71,27 @@ export default function AboutPage() {
       title: "Dispatch & Geofencing",
       description:
         "Automated trip assignment matching Mixer, Flatbed, and Dump Truck payloads. Features live GPS updates and 5 km geofence triggers.",
-      icon: <MapPin className="w-5 h-5 text-blue-600" />,
+      icon: MapPin,
+      iconColor: "text-blue-400",
+      iconBg: "bg-blue-500/10 border-blue-500/20",
     },
     {
       code: "FR-2.0",
       title: "Field Operations & e-POD",
       description:
         "Touch-screen digital delivery verification with real-time inventory updates and offline device caching for remote sites.",
-      icon: <FileCheck className="w-5 h-5 text-emerald-600" />,
+      icon: FileCheck,
+      iconColor: "text-emerald-400",
+      iconBg: "bg-emerald-500/10 border-emerald-500/20",
     },
     {
       code: "FR-3.0",
       title: "Maintenance & Analytics",
       description:
         "Mobile driver ticketing for mechanical fault reporting with severity ratings and performance telemetry dashboards.",
-      icon: <Wrench className="w-5 h-5 text-amber-600" />,
+      icon: Wrench,
+      iconColor: "text-amber-400",
+      iconBg: "bg-amber-500/10 border-amber-500/20",
     },
   ];
 
@@ -114,181 +119,275 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans antialiased">
-      {/* Hero Header */}
-      <header className="bg-slate-900 text-white py-16 px-6 sm:px-12 border-b border-slate-800">
-        <div className="max-w-6xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 bg-blue-600/20 text-blue-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-blue-500/30">
-            <Building2 className="w-3.5 h-3.5" /> {systemSpecs.status}
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white">
-            Construction Building Transport Management System
-          </h1>
-          <p className="text-base sm:text-xl text-slate-300 max-w-3xl leading-relaxed">
-            C-TMS ERP Core is an enterprise-grade logistics module engineered to
-            eliminate heavy material transit delays, optimize fleet telemetry,
-            and deliver offline digital proof of delivery.
-          </p>
-          <div className="pt-4 flex flex-wrap gap-6 text-sm text-slate-400 border-t border-slate-800/80">
-            <span>
-              <strong>System:</strong> {systemSpecs.name} v{systemSpecs.version}
-            </span>
-            <span>
-              <strong>Release Date:</strong> {systemSpecs.date}
-            </span>
-            <span>
-              <strong>Framework:</strong> Next.js App Router
-            </span>
-          </div>
-        </div>
-      </header>
+    <div className="flex flex-col min-h-screen bg-[#0b1329] text-slate-100 transition-colors overflow-x-hidden">
+      {/* --- HEADER --- */}
+      <Header />
 
-      {/* Main Content */}
-      <main className="max-w-6xl mx-auto px-6 sm:px-12 py-12 space-y-16">
-        {/* Core Capabilities */}
-        <section className="space-y-6">
-          <div className="border-b border-slate-200 pb-4">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-              <Truck className="w-6 h-6 text-blue-600" /> Core SRS Functional
-              Requirements
+      {/* --- HERO SECTION --- */}
+      <section className="relative overflow-hidden py-20 lg:py-28 bg-[#0b1329] border-b border-slate-800/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-400 backdrop-blur-md mb-6 uppercase tracking-wider">
+              <Building2 className="h-3.5 w-3.5 text-blue-400" />
+              <span>{systemSpecs.status}</span>
+            </div>
+
+            <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+              Construction Building{" "}
+              <span className="text-blue-500">Transport System</span>
+            </h1>
+
+            <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-300 leading-relaxed sm:text-xl">
+              C-TMS ERP Core is an enterprise-grade logistics module engineered
+              to eliminate heavy material transit delays, optimize fleet
+              telemetry, and deliver offline digital proof of delivery.
+            </p>
+
+            <div className="mt-8 flex flex-wrap justify-center gap-6 text-sm text-slate-400 border-t border-slate-800/80 pt-6">
+              <span>
+                <strong className="text-slate-200">System:</strong>{" "}
+                {systemSpecs.name} v{systemSpecs.version}
+              </span>
+              <span>
+                <strong className="text-slate-200">Release Date:</strong>{" "}
+                {systemSpecs.date}
+              </span>
+              <span>
+                <strong className="text-slate-200">Framework:</strong> Next.js
+                App Router
+              </span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- CORE SRS FUNCTIONAL REQUIREMENTS --- */}
+      <section className="py-20 bg-[#0b1329]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+              <Truck className="w-6 h-6" />
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Core SRS Functional Requirements
             </h2>
-            <p className="text-slate-600 text-sm mt-1">
+            <p className="mt-3 text-slate-400 text-base">
               Purpose-built software requirements designed for field conditions
               and back-office fleet management.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {features.map((feature) => (
-              <div
-                key={feature.code}
-                className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="p-2.5 rounded-lg bg-slate-100">
-                    {feature.icon}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, idx) => {
+              const Icon = feature.icon;
+              return (
+                <motion.div
+                  key={feature.code}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                  className="rounded-2xl border border-slate-800/80 bg-[#101b3a] p-8 shadow-lg hover:border-slate-700 transition-all"
+                >
+                  <div className="flex items-center justify-between mb-6">
+                    <div
+                      className={`p-3 rounded-xl border ${feature.iconBg} ${feature.iconColor}`}
+                    >
+                      <Icon className="w-6 h-6" />
+                    </div>
+                    <span className="text-xs font-semibold bg-slate-900/60 text-slate-300 px-3 py-1 rounded-full border border-slate-700">
+                      {feature.code}
+                    </span>
                   </div>
-                  <span className="text-xs font-semibold bg-slate-100 text-slate-600 px-2 py-1 rounded border border-slate-200">
-                    {feature.code}
-                  </span>
-                </div>
-                <h3 className="font-semibold text-slate-900 text-lg mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
+                  <h3 className="font-bold text-white text-xl mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Role-Based Access Control (RBAC) */}
-        <section className="space-y-6">
-          <div className="border-b border-slate-200 pb-4">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-              <Users className="w-6 h-6 text-blue-600" /> Role-Based Access
-              Control (RBAC)
+      {/* --- ROLE-BASED ACCESS CONTROL (RBAC) --- */}
+      <section className="bg-[#0e1732] border-y border-slate-800/80 py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+              <Users className="w-6 h-6" />
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Role-Based Access Control (RBAC)
             </h2>
-            <p className="text-slate-600 text-sm mt-1">
+            <p className="mt-3 text-slate-400 text-base">
               Enforcing operational domain boundaries across back-office, site
               supervision, and mobile apps.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="overflow-x-auto bg-white border border-slate-200 rounded-xl shadow-sm">
-            <table className="w-full text-left text-sm text-slate-700">
-              <thead className="bg-slate-100 text-slate-900 font-semibold border-b border-slate-200">
-                <tr>
-                  <th className="px-6 py-4">System Role</th>
-                  <th className="px-6 py-4">Access Level</th>
-                  <th className="px-6 py-4">Primary Responsibilities</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200">
-                {rbacMatrix.map((row) => (
-                  <tr key={row.role} className="hover:bg-slate-50">
-                    <td className="px-6 py-4 font-semibold text-slate-900">
-                      {row.role}
-                    </td>
-                    <td className="px-6 py-4">
-                      <span
-                        className={`px-2.5 py-1 rounded-md font-medium text-xs border ${row.badgeStyle}`}
-                      >
-                        {row.access}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 text-slate-600">{row.duties}</td>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="overflow-hidden rounded-2xl border border-slate-800/80 bg-[#101b3a] shadow-xl"
+          >
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-sm text-slate-300">
+                <thead className="bg-[#142247] text-white font-semibold border-b border-slate-800 uppercase tracking-wider text-xs">
+                  <tr>
+                    <th className="px-6 py-4">System Role</th>
+                    <th className="px-6 py-4">Access Level</th>
+                    <th className="px-6 py-4">Primary Responsibilities</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
+                </thead>
+                <tbody className="divide-y divide-slate-800/60">
+                  {rbacMatrix.map((row) => (
+                    <tr
+                      key={row.role}
+                      className="hover:bg-slate-800/40 transition-colors"
+                    >
+                      <td className="px-6 py-5 font-bold text-white">
+                        {row.role}
+                      </td>
+                      <td className="px-6 py-5">
+                        <span
+                          className={`px-3 py-1 rounded-full font-semibold text-xs border ${row.badgeStyle}`}
+                        >
+                          {row.access}
+                        </span>
+                      </td>
+                      <td className="px-6 py-5 text-slate-400 leading-relaxed">
+                        {row.duties}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-        {/* Database Domain Entities */}
-        <section className="space-y-6">
-          <div className="border-b border-slate-200 pb-4">
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
-              <Database className="w-6 h-6 text-blue-600" /> Primary Database
-              Domain Entities
+      {/* --- DATABASE DOMAIN ENTITIES --- */}
+      <section className="py-20 bg-[#0b1329]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-2xl mx-auto mb-16"
+          >
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+              <Database className="w-6 h-6" />
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Primary Database Domain Entities
             </h2>
-            <p className="text-slate-600 text-sm mt-1">
+            <p className="mt-3 text-slate-400 text-base">
               Core relational data structures supporting enterprise logistics
               workflows.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {entities.map((entity, i) => (
-              <div
+              <motion.div
                 key={i}
-                className="p-4 bg-white rounded-lg border border-slate-200 shadow-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                whileHover={{ scale: 1.02 }}
+                className="p-6 bg-[#101b3a] rounded-2xl border border-slate-800/80 shadow-md hover:border-slate-700 transition-all"
               >
-                <h3 className="font-semibold text-slate-900 mb-1 flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                <h3 className="font-bold text-white text-base mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
                   {entity.name}
                 </h3>
-                <p className="text-xs text-slate-600 leading-relaxed pl-6">
+                <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pl-7">
                   {entity.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Author Contact Cards */}
-        <section className="bg-white rounded-xl border border-slate-200 p-8 shadow-sm">
-          <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-blue-600" /> Architecture &
-            System Contacts
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {authors.map((author) => (
-              <div
-                key={author.email}
-                className="flex items-start gap-4 p-4 rounded-lg bg-slate-50 border border-slate-100"
-              >
-                <div className="w-10 h-10 rounded-full bg-slate-200 text-slate-700 font-bold flex items-center justify-center shrink-0 text-sm">
-                  {author.initials}
-                </div>
-                <div className="space-y-1">
-                  <h4 className="font-semibold text-slate-900">
-                    {author.name}
-                  </h4>
-                  <p className="text-xs text-slate-500">{author.role}</p>
-                  <a
-                    href={`mailto:${author.email}`}
-                    className="inline-flex items-center gap-1 text-xs text-blue-600 hover:underline"
-                  >
-                    <Mail className="w-3.5 h-3.5" /> {author.email}
-                  </a>
-                </div>
+      {/* --- ARCHITECTURE & SYSTEM CONTACTS --- */}
+      <section className="pb-20 bg-[#0b1329]">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="rounded-3xl border border-slate-800/80 bg-[#101b3a] p-8 sm:p-12 shadow-xl"
+          >
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+                <ShieldCheck className="w-6 h-6" />
               </div>
-            ))}
-          </div>
-        </section>
-      </main>
+              <h3 className="text-2xl font-bold text-white">
+                Architecture & System Contacts
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {authors.map((author) => (
+                <motion.div
+                  key={author.email}
+                  whileHover={{ y: -3 }}
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-[#142247] border border-slate-800/80 transition-all"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center shrink-0 text-base shadow-lg shadow-blue-600/30">
+                    {author.initials}
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="font-bold text-white text-lg">
+                      {author.name}
+                    </h4>
+                    <p className="text-xs font-medium text-blue-400">
+                      {author.role}
+                    </p>
+                    <a
+                      href={`mailto:${author.email}`}
+                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-400 transition-colors pt-1"
+                    >
+                      <Mail className="w-3.5 h-3.5 text-blue-400" />{" "}
+                      {author.email}
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* --- FOOTER --- */}
+      <Footer />
     </div>
   );
 }

@@ -51,7 +51,7 @@ export default function AboutPage() {
     {
       role: "Site Manager",
       access: "Field Supervisor",
-      badgeStyle: "bg-blue-500/10 text-blue-300 border-blue-500/30",
+      badgeStyle: "bg-cyan-500/10 text-cyan-300 border-cyan-500/30",
       duties:
         "Material receiving signoff, digital e-POD signature capture, site inventory confirmation.",
     },
@@ -71,8 +71,8 @@ export default function AboutPage() {
       description:
         "Automated trip assignment matching Mixer, Flatbed, and Dump Truck payloads. Features live GPS updates and 5 km geofence triggers.",
       icon: MapPin,
-      iconColor: "text-blue-400",
-      iconBg: "bg-blue-500/10 border-blue-500/20",
+      iconColor: "text-cyan-400",
+      iconBg: "bg-cyan-500/10 border-cyan-500/20",
     },
     {
       code: "FR-2.0",
@@ -118,26 +118,26 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#0b1329] text-slate-100 transition-colors overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-[#030712] text-slate-100 transition-colors overflow-x-hidden">
       {/* --- HEADER --- */}
       <Header />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative overflow-hidden py-20 lg:py-28 bg-[#0b1329] border-b border-slate-800/60">
+      <section className="relative overflow-hidden py-20 lg:py-28 bg-[#030712] border-b border-slate-800/80">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold text-blue-400 backdrop-blur-md mb-6 uppercase tracking-wider">
-              <Building2 className="h-3.5 w-3.5 text-blue-400" />
+            <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold text-cyan-400 backdrop-blur-md mb-6 uppercase tracking-wider">
+              <Building2 className="h-3.5 w-3.5 text-cyan-400" />
               <span>{systemSpecs.status}</span>
             </div>
 
             <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
               Construction Building{" "}
-              <span className="text-blue-500">Transport System</span>
+              <span className="text-cyan-400">Transport System</span>
             </h1>
 
             <p className="mt-6 max-w-3xl mx-auto text-lg text-slate-300 leading-relaxed sm:text-xl">
@@ -165,7 +165,7 @@ export default function AboutPage() {
       </section>
 
       {/* --- CORE SRS FUNCTIONAL REQUIREMENTS --- */}
-      <section className="py-20 bg-[#0b1329]">
+      <section className="py-20 bg-[#030712]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -174,7 +174,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mb-16"
           >
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-4">
               <Truck className="w-6 h-6" />
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -197,7 +197,7 @@ export default function AboutPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: idx * 0.1 }}
                   whileHover={{ y: -6, transition: { duration: 0.2 } }}
-                  className="rounded-2xl border border-slate-800/80 bg-[#101b3a] p-8 shadow-lg hover:border-slate-700 transition-all"
+                  className="rounded-2xl border border-slate-800/90 bg-[#0b1329] p-8 shadow-lg hover:border-slate-700 transition-all"
                 >
                   <div className="flex items-center justify-between mb-6">
                     <div
@@ -205,7 +205,7 @@ export default function AboutPage() {
                     >
                       <Icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-semibold bg-slate-900/60 text-slate-300 px-3 py-1 rounded-full border border-slate-700">
+                    <span className="text-xs font-semibold bg-slate-900/80 text-slate-300 px-3 py-1 rounded-full border border-slate-700">
                       {feature.code}
                     </span>
                   </div>
@@ -223,7 +223,7 @@ export default function AboutPage() {
       </section>
 
       {/* --- ROLE-BASED ACCESS CONTROL (RBAC) --- */}
-      <section className="bg-[#0e1732] border-y border-slate-800/80 py-20">
+      <section className="bg-[#070e20] border-y border-slate-800/80 py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -232,7 +232,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mb-16"
           >
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-4">
               <Users className="w-6 h-6" />
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -249,11 +249,11 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-2xl border border-slate-800/80 bg-[#101b3a] shadow-xl"
+            className="overflow-hidden rounded-2xl border border-slate-800/90 bg-[#0b1329] shadow-xl"
           >
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm text-slate-300">
-                <thead className="bg-[#142247] text-white font-semibold border-b border-slate-800 uppercase tracking-wider text-xs">
+                <thead className="bg-[#0f1b38] text-white font-semibold border-b border-slate-800 uppercase tracking-wider text-xs">
                   <tr>
                     <th className="px-6 py-4">System Role</th>
                     <th className="px-6 py-4">Access Level</th>
@@ -289,7 +289,7 @@ export default function AboutPage() {
       </section>
 
       {/* --- DATABASE DOMAIN ENTITIES --- */}
-      <section className="py-20 bg-[#0b1329]">
+      <section className="py-20 bg-[#030712]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -298,7 +298,7 @@ export default function AboutPage() {
             transition={{ duration: 0.5 }}
             className="text-center max-w-2xl mx-auto mb-16"
           >
-            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400 mb-4">
+            <div className="inline-flex items-center justify-center p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 mb-4">
               <Database className="w-6 h-6" />
             </div>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
@@ -319,10 +319,10 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 whileHover={{ scale: 1.02 }}
-                className="p-6 bg-[#101b3a] rounded-2xl border border-slate-800/80 shadow-md hover:border-slate-700 transition-all"
+                className="p-6 bg-[#0b1329] rounded-2xl border border-slate-800/90 shadow-md hover:border-slate-700 transition-all"
               >
                 <h3 className="font-bold text-white text-base mb-2 flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-blue-400 shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
                   {entity.name}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-400 leading-relaxed pl-7">
@@ -335,17 +335,17 @@ export default function AboutPage() {
       </section>
 
       {/* --- ARCHITECTURE & SYSTEM CONTACTS --- */}
-      <section className="pb-20 bg-[#0b1329]">
+      <section className="pb-20 bg-[#030712]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="rounded-3xl border border-slate-800/80 bg-[#101b3a] p-8 sm:p-12 shadow-xl"
+            className="rounded-3xl border border-slate-800/90 bg-[#0b1329] p-8 sm:p-12 shadow-xl"
           >
             <div className="flex items-center gap-3 mb-8">
-              <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-400">
+              <div className="p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-white">
@@ -358,23 +358,23 @@ export default function AboutPage() {
                 <motion.div
                   key={author.email}
                   whileHover={{ y: -3 }}
-                  className="flex items-start gap-4 p-5 rounded-2xl bg-[#142247] border border-slate-800/80 transition-all"
+                  className="flex items-start gap-4 p-5 rounded-2xl bg-[#0f1b38] border border-slate-800/80 transition-all"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-600 text-white font-extrabold flex items-center justify-center shrink-0 text-base shadow-lg shadow-blue-600/30">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-600 text-slate-950 font-extrabold flex items-center justify-center shrink-0 text-base shadow-lg shadow-cyan-500/20">
                     {author.initials}
                   </div>
                   <div className="space-y-1">
                     <h4 className="font-bold text-white text-lg">
                       {author.name}
                     </h4>
-                    <p className="text-xs font-medium text-blue-400">
+                    <p className="text-xs font-medium text-cyan-400">
                       {author.role}
                     </p>
                     <a
                       href={`mailto:${author.email}`}
-                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-400 transition-colors pt-1"
+                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-cyan-400 transition-colors pt-1"
                     >
-                      <Mail className="w-3.5 h-3.5 text-blue-400" />{" "}
+                      <Mail className="w-3.5 h-3.5 text-cyan-400" />{" "}
                       {author.email}
                     </a>
                   </div>

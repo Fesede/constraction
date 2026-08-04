@@ -50,11 +50,28 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* CTA BUTTON */}
-        <div className="flex items-center gap-4">
+        {/* AUTH & CTA BUTTONS */}
+        <div className="flex items-center gap-3 sm:gap-4">
+          {/* Log In Link */}
+          <Link
+            href="/login"
+            className="text-sm font-semibold text-slate-300 hover:text-white transition-colors px-2 py-1"
+          >
+            Log in
+          </Link>
+
+          {/* Sign Up Button */}
+          <Link
+            href="/signup"
+            className="rounded-xl border border-slate-700 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-200 hover:bg-slate-800 hover:text-white hover:border-slate-600 active:scale-95 transition-all"
+          >
+            Sign up
+          </Link>
+
+          {/* Get a Quote Button */}
           <Link
             href="/contact"
-            className="rounded-xl bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 active:scale-95 transition-all"
+            className="hidden sm:inline-flex rounded-xl bg-sky-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 active:scale-95 transition-all"
           >
             Get a Quote
           </Link>

@@ -11,6 +11,7 @@ import {
   Truck,
   X,
   LogOut,
+  Briefcase,
 } from "lucide-react";
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -19,27 +20,32 @@ export default function Sidebar({ isOpen, onClose }) {
   // Core Fleet Manager Navigation Pages
   const navItems = [
     {
-      name: "Fleet Overview",
+      name: "Dashboard",
       href: "/fleet/dashboard",
       icon: LayoutDashboard,
     },
     {
-      name: "Live GPS Tracking",
-      href: "/fleet/tracking",
-      icon: MapPin,
+      name: "Apply Project",
+      href: "/fleet/ApplyProject",
+      icon: Briefcase,
     },
     {
-      name: "Dispatch & Trips",
+      name: "Dispatches",
       href: "/fleet/dispatches",
       icon: Send,
     },
     {
-      name: "Vehicles & Maintenance",
+      name: "Live Tracking",
+      href: "/fleet/tracking",
+      icon: MapPin,
+    },
+    {
+      name: "Vehicles",
       href: "/fleet/vehicles",
       icon: Wrench,
     },
     {
-      name: "Fleet Analytics",
+      name: "Analytics",
       href: "/fleet/reports",
       icon: BarChart3,
     },
@@ -89,7 +95,7 @@ export default function Sidebar({ isOpen, onClose }) {
         {/* Primary Page Navigation */}
         <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto">
           <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 px-3">
-            Fleet Operations
+            Operations Menu
           </p>
 
           {navItems.map((item) => {

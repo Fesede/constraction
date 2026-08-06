@@ -69,7 +69,7 @@ export default function ProjectsOverviewPage() {
         </div>
 
         <Link
-          href="/projects/create"
+          href="/clinte/create"
           className="bg-[#1D63FF] hover:bg-blue-600 text-white font-medium px-5 py-3 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md shrink-0 text-sm"
         >
           <PlusCircle className="w-4 h-4" />

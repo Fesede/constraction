@@ -11,6 +11,7 @@ import {
   Building2,
   X,
   LogOut,
+  Briefcase,
 } from "lucide-react";
 
 export default function Sidebar({ isOpen, onClose }) {
@@ -22,6 +23,11 @@ export default function Sidebar({ isOpen, onClose }) {
       name: "Site Overview",
       href: "/manager/dashboard",
       icon: LayoutDashboard,
+    },
+    {
+      name: "Apply Project",
+      href: "/manager/ApplyProject",
+      icon: Briefcase,
     },
     {
       name: "Active Dispatches",

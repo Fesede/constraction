@@ -14,13 +14,13 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { name: "Projects Overview", href: "/projects", icon: FolderKanban },
-  { name: "Commission Project", href: "/projects/create", icon: PlusCircle },
-  { name: "Applicants Bidding", href: "/projects/applicants", icon: Users },
-  { name: "Active Dispatches", href: "/projects/dispatches", icon: Truck },
-  { name: "e-POD Sign-offs", href: "/projects/epod", icon: FileCheck },
-  { name: "Quality Log", href: "/projects/quality-log", icon: ClipboardCheck },
-  { name: "Reports & Analytics", href: "/projects/reports", icon: BarChart3 },
+  { name: "Projects Overview", href: "/clinte", icon: FolderKanban },
+  { name: "Commission Project", href: "/clinte/create", icon: PlusCircle },
+  { name: "Applicants Bidding", href: "/clinte/applicants", icon: Users },
+  { name: "Active Dispatches", href: "/clinte/dispatches", icon: Truck },
+  { name: "e-POD Sign-offs", href: "/clinte/epod", icon: FileCheck },
+  { name: "Quality Log", href: "/clinte/quality-log", icon: ClipboardCheck },
+  { name: "Reports & Analytics", href: "/clinte/reports", icon: BarChart3 },
 ];
 
 export default function Sidebar() {

@@ -32,7 +32,7 @@ export default function Header() {
             />
           </div>
           <span className="text-xl font-bold tracking-tight text-white">
-            Construct<span className="text-amber-500">Co</span>
+            C<span className="text-amber-500">-TMS</span>
           </span>
         </Link>
 
